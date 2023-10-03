@@ -15,6 +15,7 @@ const db = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB,
+  port: process.env.DB_PORT
 });
 
 app.post("/createTask", (req, res) => {
@@ -31,7 +32,7 @@ app.post("/createTask", (req, res) => {
 app.get("/getTasks", (req, res) => {
   sqlGet = "SELECT * FROM task";
   db.query(sqlGet, (error, result) => {
-    res.send(result);
+    res.send({result, length: result.length });
   });
 });
 
@@ -41,7 +42,7 @@ app.get("/getActiveTasks", (req, res) => {
     if (error) {
       console.log(error);
     }
-    res.send(result);
+    res.send({result, length: result.length });
   });
 });
 
@@ -51,7 +52,7 @@ app.get("/getCompletedTasks", (req, res) => {
     if (error) {
       console.log(error);
     }
-    res.send(result);
+    res.send({result, length: result.length });
   });
 });
 
@@ -81,7 +82,7 @@ app.delete("/deleteTask/:id", (req, res) => {
 
 app.delete("/deleteAll", (req, res) => {
   sqlDeleteAll = "DELETE FROM task WHERE checked = true";
-  db.query(sqlDeleteAll, id, (error, result) => {
+  db.query(sqlDeleteAll, (error, result) => {
     if (error) {
       console.log(error);
     }
