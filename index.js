@@ -6,8 +6,13 @@ const bodyParser = require("body-parser");
 const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
 
+const corOptions = {
+  origin: "http://localhost/3000",
+  credentials: true,
+  optionSucessStatus: 200,
+};
 app.use(express.json());
-app.use(cors());
+app.use(cors(corOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = mysql.createPool({
@@ -15,7 +20,7 @@ const db = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB,
-  port: process.env.DB_PORT
+  port: process.env.DB_PORT,
 });
 
 app.post("/createTask", (req, res) => {
@@ -32,7 +37,7 @@ app.post("/createTask", (req, res) => {
 app.get("/getTasks", (req, res) => {
   sqlGet = "SELECT * FROM task";
   db.query(sqlGet, (error, result) => {
-    res.send({result, length: result.length });
+    res.send({ result, length: result.length });
   });
 });
 
@@ -42,7 +47,7 @@ app.get("/getActiveTasks", (req, res) => {
     if (error) {
       console.log(error);
     }
-    res.send({result, length: result.length });
+    res.send({ result, length: result.length });
   });
 });
 
@@ -52,7 +57,7 @@ app.get("/getCompletedTasks", (req, res) => {
     if (error) {
       console.log(error);
     }
-    res.send({result, length: result.length });
+    res.send({ result, length: result.length });
   });
 });
 
