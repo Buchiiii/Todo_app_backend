@@ -65,7 +65,7 @@ app.put("/updateCheck/:id", (req, res) => {
   const id = req.params.id;
   const sqlUpdate = "UPDATE task SET `checked` = ? WHERE id= ?";
 
-  db.query(sqlUpdate, [!req.body.checked, id], (err, result) => {
+  db.query(sqlUpdate, [req.body.checked, id], (err, result) => {
     if (err) {
       console.log(err);
     }
