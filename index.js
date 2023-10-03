@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
 
 const corOptions = {
-  origin: "http://localhost/3000",
+  origin: "http://localhost:3000",
   credentials: true,
   optionSucessStatus: 200,
 };
