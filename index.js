@@ -8,12 +8,12 @@ require("dotenv").config();
 
 const corOptions = {
   origin: "http://localhost:3000",
+  methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
   credentials: true,
   optionSucessStatus: 200,
 };
 app.use(express.json());
-//app.use(cors(corOptions));
-app.enableCors()
+app.use(cors(corOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = mysql.createPool({
