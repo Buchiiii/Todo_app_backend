@@ -12,7 +12,8 @@ const corOptions = {
   optionSucessStatus: 200,
 };
 app.use(express.json());
-app.use(cors(corOptions));
+//app.use(cors(corOptions));
+app.enableCors()
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = mysql.createPool({
