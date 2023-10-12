@@ -33,6 +33,7 @@ app.post("/createTask", (req, res) => {
       console.log(error);
     }
   });
+  res.send('Successful');
 });
 
 app.get("/getTasks", (req, res) => {
