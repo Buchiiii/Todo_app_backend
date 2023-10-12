@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
 
 const corOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://todo-app-frontend-flame.vercel.app/",
   methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
   credentials: true,
   optionSucessStatus: 200,
