@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
 
 const corOptions = {
-  origin: process.env.ORIGIN_URL,
+  origin: "*",
   methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
   credentials: true,
   optionSucessStatus: 200,
