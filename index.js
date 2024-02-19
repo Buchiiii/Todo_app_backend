@@ -19,7 +19,7 @@ app.use(express.json());
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
 //   next();
 // });
-app.use(cors(corOptions));
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = mysql.createPool({
